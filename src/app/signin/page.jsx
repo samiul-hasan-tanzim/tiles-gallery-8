@@ -5,6 +5,7 @@ import Image from "next/image";
 import googleIcon from "@/app/assets/google.png";
 import { authClient } from "@/lib/auth-client";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 const SignInPage = () => {
     const redirectingPath = useRouter();
@@ -116,6 +117,15 @@ const SignInPage = () => {
                     <Image src={googleIcon} width={18} height={18} alt="google" />
                     Continue with Google
                 </Button>
+                <div className="mt-5 text-center text-sm text-gray-600">
+                    Don’t have an account?{" "}
+                    <Link
+                        href="/signup"
+                        className="text-blue-600 hover:underline font-medium"
+                    >
+                        Sign up
+                    </Link>
+                </div>
             </div>
         </div>
     );

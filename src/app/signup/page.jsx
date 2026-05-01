@@ -23,7 +23,7 @@ const SignUpPage = () => {
 
         if (data) {
             alert("Successfully Sign In");
-            // redirectingPath.push("/profile");
+            redirectingPath.push("/");
         }
         if (error) {
             alert(error.message);

@@ -6,10 +6,15 @@ import logo from '@/assets/tiles.png'
 import { NavLinks } from "./NavLins";
 import { work_sans } from "@/app/layout";
 import { Avatar, Button, Spinner } from "@heroui/react";
+import { authClient } from "@/lib/auth-client";
 
 const Navbar = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const nabLinks = NavLinks
+
+    const { data: session, isPending } = authClient.useSession()
+    const user = session?.user
+    console.log(user)
 
     return (
         <nav className={`${work_sans.className} sticky top-0 z-40 w-full border-b border-separator bg-background/70 backdrop-blur-lg`}>
@@ -61,17 +66,26 @@ const Navbar = () => {
                             ))
                         }
                     </ul>
-                    <div className="flex gap-3 items-center">
-                        <Avatar>
-                            <Avatar.Image alt="John Doe" src="https://img.heroui.chat/image/avatar?w=400&h=400&u=3" />
-                            <Avatar.Fallback>
-                                <div className="flex flex-col items-center gap-2">
-                                    <Spinner color="accent" />
-                                </div>
-                            </Avatar.Fallback>
-                        </Avatar>
-                        <Button variant="danger">Log Out</Button>
-                    </div>
+                    {
+                        user ? (
+                            <div className="flex gap-3 items-center">
+                                <Avatar>
+                                    <Avatar.Image alt="John Doe" src={user.image} />
+                                    <Avatar.Fallback>
+                                        <div className="flex flex-col items-center gap-2">
+                                            <Spinner color="accent" />
+                                        </div>
+                                    </Avatar.Fallback>
+                                </Avatar>
+                                <Button onClick={() => authClient.signOut()} className={'rounded-md'} variant="danger">Sign out</Button>
+                            </div>
+                        ) : <Link
+                            href="/signin"
+                            className="px-4 py-2 text-sm font-medium text-blue-600 border border-blue-600 hover:bg-blue-50 rounded-md transition active:scale-95 active:opacity-80"
+                        >
+                            Sign In
+                        </Link>
+                    }
                 </header>
             </div>
 
