@@ -3,7 +3,7 @@ import { MongoClient } from "mongodb";
 import { mongodbAdapter } from "better-auth/adapters/mongodb";
 
 const client = new MongoClient(process.env.DB_URI);
-const db = client.db("daily_pulse");
+const db = client.db("tiles-gallery");
 
 export const auth = betterAuth({
     database: mongodbAdapter(db, {

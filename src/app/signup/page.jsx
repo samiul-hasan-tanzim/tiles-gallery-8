@@ -17,13 +17,13 @@ const SignUpPage = () => {
             name: `${userData.first_name} ${userData.last_name}`,
             email: userData.email,
             password: userData.password,
-            profile: userData.image
+            image: userData.image
         })
         console.log(data, error)
 
         if (data) {
             alert("Successfully Sign In");
-            redirectingPath.push("/profile");
+            // redirectingPath.push("/profile");
         }
         if (error) {
             alert(error.message);
