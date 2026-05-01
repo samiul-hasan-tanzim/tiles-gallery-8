@@ -1,13 +1,33 @@
 "use client";
+import { authClient } from "@/lib/auth-client";
 import { Check } from "@gravity-ui/icons";
-import { Button, Description, FieldError, Form, Input, Label, TextField, } from "@heroui/react";
+import { Button, Description, FieldError, Form, Input, Label, TextField } from "@heroui/react";
+import { useRouter } from "next/navigation";
 
 const SignUpPage = () => {
+    const redirectingPath = useRouter();
+
     const onSubmit = async (e) => {
         e.preventDefault();
         const formData = new FormData(e.currentTarget);
         const userData = Object.fromEntries(formData.entries())
         console.log(userData)
+
+        const { data, error } = await authClient.signUp.email({
+            name: `${userData.first_name} ${userData.last_name}`,
+            email: userData.email,
+            password: userData.password,
+            profile: userData.image
+        })
+        console.log(data, error)
+
+        if (data) {
+            alert("Successfully Sign In");
+            redirectingPath.push("/profile");
+        }
+        if (error) {
+            alert(error.message);
+        }
     };
 
     return (
