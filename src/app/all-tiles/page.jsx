@@ -81,7 +81,7 @@ const AllTilesPage = () => {
                             </p>
 
                             <button
-                                onClick={() => router.push(`/tiles/${tile.id}`)}
+                                onClick={() => router.push(`/tile/${tile.id}`)}
                                 className="w-full mt-3 bg-black text-white py-2 rounded-xl hover:bg-gray-800 transition"
                             >
                                 Details

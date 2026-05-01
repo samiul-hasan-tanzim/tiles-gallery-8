@@ -38,7 +38,7 @@ const FeaturedTilesCard = async () => {
                             ))}
                         </div>
 
-                        <Link href={`tiles/${tile.id}`} className="mt-auto">
+                        <Link href={`tile/${tile.id}`} className="mt-auto">
                             <button className="w-full mt-3 bg-black text-white py-2 rounded-lg">
                                 View Details
                             </button>

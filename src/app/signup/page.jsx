@@ -2,6 +2,7 @@
 import { authClient } from "@/lib/auth-client";
 import { Check } from "@gravity-ui/icons";
 import { Button, Description, FieldError, Form, Input, Label, TextField } from "@heroui/react";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 
 const SignUpPage = () => {
@@ -126,6 +127,15 @@ const SignUpPage = () => {
                     <Button type="reset" variant="secondary" className="w-full">
                         Reset
                     </Button>
+                </div>
+                <div className="mt-5 text-center text-sm text-gray-600">
+                    Already have an account?{" "}
+                    <Link
+                        href="/signin"
+                        className="text-blue-600 hover:underline font-medium"
+                    >
+                        Sign in
+                    </Link>
                 </div>
             </Form>
         </div>
