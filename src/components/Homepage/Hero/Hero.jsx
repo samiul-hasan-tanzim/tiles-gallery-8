@@ -8,7 +8,7 @@ import { Autoplay, Navigation } from 'swiper/modules';
 import Image from 'next/image';
 
 
-const dataRes = await fetch('https://tiles-gallery-api.onrender.com/tiles')
+const dataRes = await fetch('https://tiles-gallery-api.onrender.com/tiles', { cache: 'no-store' })
 const data = await dataRes.json()
 console.log(data)
 

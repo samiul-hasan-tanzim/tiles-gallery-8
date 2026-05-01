@@ -17,7 +17,7 @@ const TilesDetailesPage = ({ params }) => {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        fetch(`https://tiles-gallery-api.onrender.com/tiles/${id}`)
+        fetch(`https://tiles-gallery-api.onrender.com/tiles/${id}`, { cache: 'no-store' })
             .then(res => res.json())
             .then(data => setTile(data))
             .finally(() => setLoading(false));

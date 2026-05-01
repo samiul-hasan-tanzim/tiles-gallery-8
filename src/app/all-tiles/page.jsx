@@ -12,7 +12,7 @@ const AllTilesPage = () => {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        fetch("https://tiles-gallery-api.onrender.com/tiles")
+        fetch("https://tiles-gallery-api.onrender.com/tiles", { cache: 'no-store' })
             .then((res) => res.json())
             .then((data) => {
                 setTiles(data);
