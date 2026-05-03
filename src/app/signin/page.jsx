@@ -6,6 +6,7 @@ import googleIcon from "@/app/assets/google.png";
 import { authClient } from "@/lib/auth-client";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
+import { toast } from "react-toastify";
 
 const SignInPage = () => {
     const redirectingPath = useRouter();
@@ -22,11 +23,11 @@ const SignInPage = () => {
         console.log({ data, error })
 
         if (data) {
-            alert("Successfully Sign In");
+            toast.success("Successfully Sign In");
             redirectingPath.push("/");
         }
         if (error) {
-            alert(error.message);
+            toast.error(error.message);
         }
 
     };

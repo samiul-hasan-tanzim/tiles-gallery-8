@@ -18,8 +18,8 @@ const ProfilePage = () => {
     return (
         <div className="min-h-screen flex items-center justify-center bg-gray-100 p-6">
             <div className="w-full max-w-md bg-white rounded-2xl shadow-lg p-6 flex flex-col items-center gap-4">
-                <Avatar className="w-20 h-20">
-                    <Avatar.Image src={user?.image} />
+                <Avatar >
+                    <Avatar.Image className="w-20" src={user?.image} />
                     <Avatar.Fallback>{user?.name?.charAt(0)}</Avatar.Fallback>
                 </Avatar>
 

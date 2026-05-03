@@ -7,8 +7,11 @@ import { NavLinks } from "./NavLins";
 import { work_sans } from "@/app/layout";
 import { Avatar, Button, Spinner } from "@heroui/react";
 import { authClient } from "@/lib/auth-client";
+import { usePathname } from "next/navigation";
 
 const Navbar = () => {
+    const pathName = usePathname()
+
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const nabLinks = NavLinks
 
@@ -56,14 +59,17 @@ const Navbar = () => {
                     </div>
                     <ul className="hidden items-center gap-4 md:flex">
                         {
-                            nabLinks.map((navLink, i) => (
-                                <li key={i} className="relative group cursor-pointer">
-                                    <Link href={navLink.path} className="inline-block">
-                                        {navLink.name}
-                                    </Link>
-                                    <span className="absolute left-0 bottom-0 h-0.5 w-full bg-black scale-x-0 group-hover:scale-x-100 transition-transform duration-300 ease-out origin-center"></span>
-                                </li>
-                            ))
+                            nabLinks.map((navLink, i) => {
+                                const isActive = pathName === navLink.path;
+                                return (
+                                    <li key={i} className="relative group cursor-pointer">
+                                        <Link href={navLink.path} className={`${isActive && "border-b-2 border-black"} inline-block`}>
+                                            {navLink.name}
+                                        </Link>
+                                        <span className="absolute left-0 bottom-0 h-0.5 w-full bg-black scale-x-0 group-hover:scale-x-100 transition-transform duration-300 ease-out origin-center"></span>
+                                    </li>
+                                )
+                            })
                         }
                     </ul>
                     {

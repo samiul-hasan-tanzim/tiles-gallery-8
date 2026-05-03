@@ -4,6 +4,7 @@ import { Check } from "@gravity-ui/icons";
 import { Button, Description, FieldError, Form, Input, Label, TextField } from "@heroui/react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { toast } from "react-toastify";
 
 const SignUpPage = () => {
     const redirectingPath = useRouter();
@@ -23,11 +24,11 @@ const SignUpPage = () => {
         console.log(data, error)
 
         if (data) {
-            alert("Successfully Sign In");
+            toast.success("Successfully Sign Up");
             redirectingPath.push("/");
         }
         if (error) {
-            alert(error.message);
+            toast.error(error.message);
         }
     };
 
