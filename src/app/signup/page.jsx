@@ -25,7 +25,7 @@ const SignUpPage = () => {
 
         if (data) {
             toast.success("Successfully Sign Up");
-            redirectingPath.push("/");
+            redirectingPath.push("/signin");
         }
         if (error) {
             toast.error(error.message);

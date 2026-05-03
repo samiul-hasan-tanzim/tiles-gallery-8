@@ -4,6 +4,7 @@ import { authClient } from "@/lib/auth-client";
 import { Avatar, Spinner } from "@heroui/react";
 import { UpdateUser } from "./UpdateUser";
 import Loading from "../loading";
+import Link from "next/link";
 
 const ProfilePage = () => {
     const { data: session, isPending } = authClient.useSession();
@@ -20,7 +21,7 @@ const ProfilePage = () => {
             <div className="w-full max-w-md bg-white rounded-2xl shadow-lg p-6 flex flex-col items-center gap-4">
                 <Avatar >
                     <Avatar.Image className="w-20" src={user?.image} />
-                    <Avatar.Fallback>{user?.name?.charAt(0)}</Avatar.Fallback>
+                    <Avatar.Fallback>{user?.name}</Avatar.Fallback>
                 </Avatar>
 
                 <div className="text-center space-y-1">
@@ -28,7 +29,9 @@ const ProfilePage = () => {
                     <p className="text-sm text-muted">{user?.email}</p>
                 </div>
 
-                <UpdateUser user={user} />
+                <Link href={'/profile/update'}>
+                    <button className="text-blue-500">Edit Profile</button>
+                </Link>
             </div>
         </div>
     );
