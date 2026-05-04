@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 const HighestRated = async ({ data }) => {
-    console.log(data)
+    // console.log(data)
     // const res = await fetch('https://tiles-gallery-api.onrender.com/tiles', { cache: 'no-store' });
     // const rated = await res.json();
 

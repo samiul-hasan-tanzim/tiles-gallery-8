@@ -5,7 +5,7 @@ const FeaturedTilesCard = async () => {
 
     const dataRes = await fetch('https://tiles-gallery-api.onrender.com/featuredTiles', { cache: 'no-store' })
     const tiles = await dataRes.json()
-    console.log(tiles)
+    // console.log(tiles)
 
     return (
         <div className="container mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 p-6">
